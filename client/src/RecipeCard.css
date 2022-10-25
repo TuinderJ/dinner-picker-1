@@ -1,0 +1,39 @@
+/* * {
+  border: 1px solid black;
+} */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  width: 350px;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-header {
+  border-bottom: 1px solid black;
+  padding: 0.25em;
+}
+
+.card > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card img {
+  width: 9rem;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.card-description {
+  padding: 0.5em;
+}
+
+.favorite {
+  width: 1.5em;
+  height: 1.5em;
+}
