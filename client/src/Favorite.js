@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 
-export default function Favorite({ recipe, setRecipes }) {
+export default function Favorite({ recipe, recipes, setRecipes }) {
   const onClick = () => {
-    setRecipes(oldRecipes => oldRecipes.map(oldRecipe => (oldRecipe.uuid === recipe.uuid ? { ...oldRecipe, favorite: !recipe.favorite } : { ...oldRecipe })));
-  };
-
-  useEffect(() => {
+    const newRecipes = recipes.map(oldRecipe => (oldRecipe.uuid === recipe.uuid ? { ...oldRecipe, favorite: !recipe.favorite } : { ...oldRecipe }));
     fetch(`http://localhost:3000/API/recipe/${recipe.uuid}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(recipe),
+      body: JSON.stringify({ ...recipe, favorite: !recipe.favorite }),
     })
       .then(response => response.json())
-      .then(data => console.log(data));
-  }, [recipe]);
+      .then(data => {
+        console.log(data);
+        setRecipes(newRecipes);
+      });
+  };
 
   return (
     <>

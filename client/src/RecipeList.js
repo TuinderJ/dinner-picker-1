@@ -6,7 +6,7 @@ export default function RecipeList({ recipes, setRecipes }) {
   return (
     <div className="card-holder">
       {recipes.map(recipe => (
-        <RecipeCard key={recipe.uuid} recipe={recipe} setRecipes={setRecipes} />
+        <RecipeCard key={recipe.uuid} recipe={recipe} recipes={recipes} setRecipes={setRecipes} />
       ))}
     </div>
   );
